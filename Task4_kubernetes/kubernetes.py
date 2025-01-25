@@ -14,7 +14,7 @@ warning = """
 |    utilizado el ID del alumno. Si necesitas modificarlo, puedes buscar   |
 |    la línea 275 en tu código donde se encuentra la referencia a          |
 |    'gcloud container clusters' y asegurarte de que el proyecto sea el    |
-|    correcto, en este caso 'clear-column-411518'.                         |
+|    correcto, en este caso 'nomadic-vehicle-369811'.                         |
 |                                                                          |
 | 1. Debes contar con una cuenta en Docker Hub.                            |
 |                                                                          |
@@ -286,14 +286,14 @@ else:
     create = False
 if create:
     resultado = subprocess.run(
-        "gcloud container clusters create creativa2 --num-nodes=3 --no-enable-autoscaling --zone europe-west1-d --project clear-column-411518",
+        "gcloud container clusters create creativa2 --num-nodes=3 --no-enable-autoscaling --zone europe-west1-d --project nomadic-vehicle-369811",
         shell=True,
         check=True,
     )
 
 print("\nAccediendo al cluster que hemos creado: \n")
 subprocess.run(
-    "gcloud container clusters get-credentials creativa2 --zone europe-west1-d --project clear-column-411518",
+    "gcloud container clusters get-credentials creativa2 --zone europe-west1-d --project nomadic-vehicle-369811",
     shell=True,
     check=True,
 )
