@@ -258,8 +258,8 @@ def apply_kubectl():
     subprocess.run(["kubectl", "get", "deployments"])
     print("\nPods:\n")
     subprocess.run(["kubectl", "get", "pods"])
-    print("\nEsperando otros 20 segundos para obtener a dirección publica\n")
-    time.sleep(20)
+    print("\nEsperando otros 30 segundos para obtener a dirección publica\n")
+    time.sleep(30)
     subprocess.run(["kubectl", "get", "services", "productpage"])
 
 
