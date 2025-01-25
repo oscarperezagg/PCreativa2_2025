@@ -1,0 +1,68 @@
+version: "3"
+services:
+  productpage:
+    build:
+      context: .
+      dockerfile: productpage
+    image: productpage/g23 # Nombre de la imagen
+    container_name: productpage-g23 # Nombre del contenedor
+    ports:
+      - "9080:9080"
+
+  details:
+    build:
+      context: .
+      dockerfile: details
+    image: details/g23 # Nombre de la imagen
+    container_name: details-g23 # Nombre del contenedor
+    environment:
+      - SERVICE_VERSION=v1
+      - ENABLE_EXTERNAL_BOOK_SERVICE=true
+    ports:
+      - "9081:9080"
+
+  reviews:
+    build:
+      context: ./practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg
+      dockerfile: Dockerfile
+    image: reviews/g23:v1 # Nombre de la imagen con versión v1
+    container_name: reviews-g23 # Nombre del contenedor
+    environment:
+      - SERVICE_VERSION=v1
+      - ENABLE_RATINGS=true
+    ports:
+      - "9082:9080"
+
+  ratings:
+    build:
+      context: .
+      dockerfile: ratings
+    image: ratings/g23 # Nombre de la imagen
+    container_name: ratings-g23 # Nombre del contenedor
+    environment:
+      - SERVICE_VERSION=v1
+    ports:
+      - "9083:9080"
+  reviews_v2:
+    build:
+      context: ./practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg
+      dockerfile: Dockerfile
+    image: reviews/g23:v2 # Nombre de la imagen con versión v2
+    container_name: reviews-v2-g23 # Nombre del contenedor
+    environment:
+      - SERVICE_VERSION=v2
+      - ENABLE_RATINGS=true
+    ports:
+      - "9084:9080"
+
+  reviews_v3:
+    build:
+      context: ./practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg
+      dockerfile: Dockerfile
+    image: reviews/g23:v3 # Nombre de la imagen con versión v3
+    container_name: reviews-v3-g23 # Nombre del contenedor
+    environment:
+      - SERVICE_VERSION=v3
+      - ENABLE_RATINGS=true
+    ports:
+      - "9085:9080"
